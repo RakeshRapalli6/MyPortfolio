@@ -1,0 +1,312 @@
+.LoginForm {
+  text-align: center;
+  height: 100vh;
+  background-color: rgb(140, 156, 140);
+}
+
+.Header {
+	color: red;
+	font-weight: 800;
+}
+
+.welcome-msg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 800;
+	margin-top: auto;
+	font-size: large;
+}
+
+.back-to-dash {
+	margin-left: 8vh;
+	padding-top: 5vh;
+	font-size: large;
+	font-weight: 500;
+	display: block;
+}
+
+.back-to-dash:hover {
+	cursor: pointer;
+	color: rgb(224, 87, 87);
+}
+
+.github {
+	text-decoration: none;	
+	color:black;
+	margin-top: 2vh;
+}
+
+.github:hover {
+	cursor: pointer;
+	color: rgb(224, 87, 87);     
+
+}
+
+.linkedin {
+	text-decoration: none;	
+	color: black;   
+	margin-top: 2vh;
+}
+
+.linkedin:hover {
+	cursor: pointer;
+	color: rgb(224, 87, 87); 
+}
+
+.urls {
+	margin-top: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.profile-header {
+	font-size: large;
+	font-weight: 800;
+}
+
+.login-h {
+	font-weight: 800;
+	font-size: large;
+}
+
+.profile-container {
+	height: 100vh;
+	background-color: rgb(140, 156, 140);
+}
+
+.navbar {
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	padding: 10px;
+	height: 98vh;
+	background-color: rgb(140, 156, 140);
+}
+
+.-home {
+    align-self: flex-end;
+    margin-right: 10px; 
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.-home:hover {
+	cursor: pointer;
+	background-color: white;
+}
+
+.profile {
+	cursor: pointer;
+	font-weight: 600;
+	margin-left: 170vh;
+}
+
+.no-access {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 40vh;
+	font-weight: 1000;
+	font-size: larger;
+	color:rgb(224, 87, 87)
+}
+
+.second-msg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5vh;
+	font-weight: 1000;
+	font-size: larger;
+}
+
+.profile:hover {
+	color:  rgb(224, 87, 87);  ;
+	cursor: pointer;
+}
+
+.logout:hover {
+	color: rgb(224, 87, 87);  
+	cursor: pointer;
+}
+
+.profile-container span{
+	display: block;
+	margin-top: 2vh;
+	font-size: large;
+	font-weight: 900;
+}
+
+
+.db {
+	cursor: pointer;
+}
+
+.db:hover {
+	color: rgb(224, 87, 87); 
+}
+
+.profile-body {
+	margin-top: 35vh;
+	margin-left: 12vh;
+}	
+
+.profile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Home {
+	height: 100vh;	
+	background-color: rgb(140, 156, 140);
+}
+
+.SignUpForm {
+	text-align: center;
+	height: 100vh;
+	background-color: rgb(140, 156, 140);
+}
+
+.Home-header {
+	color: red;
+	font-weight: 800;
+	display: flex;
+	justify-content: center;
+}
+
+.Sub-header {
+	color: black;
+	display: flex;
+	justify-content: center;
+	margin-top: 30vh;
+	font-size: 20px;
+}
+
+.Login-button {
+	color: black;
+	font-weight: 1000;
+	margin-top: 2vh;
+	font-size: 20px;
+	height: 6vh;
+	width: 13vh;
+	background-color: whitesmoke; 
+	border: none;
+	transition: background-color 0.3s ease;
+}
+
+.Login-button:hover {
+	background-color: #ccc; 
+	color: white;           
+}
+.Login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.username {
+	margin-top: 20vh;
+	width : 50vh;
+	height: 5vh;
+	border-radius: 6px;
+}
+
+.password {
+	margin-top: 5vh;
+	width : 50vh;
+	height: 5vh;
+	border-radius: 6px;
+}
+
+.Submit {
+	margin-top: 4vh;
+	height: 6vh;
+	width: 13vh;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.Submit :hover {
+	background-color: #ccc; 
+	color: white;           
+}
+
+.reset-container {
+	height: 100vh;
+	background-color: rgb(140, 156, 140);
+}
+
+.old-pass {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 30vh;
+	font-size: large;
+	font-weight: 800;
+}
+
+.new-pass {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2vh;
+	font-size: large;
+	font-weight: 800;
+}
+
+.new-pass-2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2vh;
+	font-size: large;
+	font-weight: 800;
+}
+
+.reset-msg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2vh;
+	font-size: large;
+	font-weight: 800;
+}
+
+.reset:hover {
+	cursor: pointer;
+	color: rgb(224, 87, 87);  
+}
+
+.submit-pass {
+	margin-top: 3vh;
+	font-size: large;
+	font-weight: 800;
+	margin-left: 90vh;
+}
+
+.submit-pass:hover {
+	cursor: pointer;
+	background-color: rgb(208, 206, 206);
+}
+
+.old-pass-box {
+	width: 30vh;
+	height: 3vh;
+	margin-left: 2vh;
+}
+
+.new-pass-box {
+	width: 30vh;
+	height: 3vh;
+	margin-left: 2vh;
+}
+
+.new-pass-box-2 {
+	width: 30vh;
+	height: 3vh;
+	margin-left: 2vh;
+}
