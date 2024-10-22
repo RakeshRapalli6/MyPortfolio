@@ -4,113 +4,105 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = ({ setIsAuth }) => {
-	const [isButtonClicked, setIsButtonClicked] = useState(false);	
-	const usernameInputRef = useRef(null);
-	const passwordInputRef = useRef(null);
-	const navigate = useNavigate();	
-	const [msg, setMsg] = useState("");
-	const [isAuthorized, setIsAuthorized] = useState(false);
+   const usernameInputRef = useRef(null);
+   const passwordInputRef = useRef(null);
+   const navigate = useNavigate();	
+   const [msg, setMsg] = useState("");
+   const [isAuthorized, setIsAuthorized] = useState(false);
 
-	const userAuthorization = async () => {
-		let dataFromDb = {};
-		let userFound = false;
-		const usernameInputFromForm = usernameInputRef.current.value.trim();
-		const passwordInputFromForm = passwordInputRef.current.value.trim();
-		try {
-			const response = await axios.get('http://localhost:8080/users');
-			dataFromDb = response.data;
-			if (isButtonClicked && usernameInputFromForm === '' || passwordInputFromForm === '') {
-				setMsg("Please enter your details");
-				return;
-			} else if(!isButtonClicked) {
-				setIsAuthorized(false);
-			} else {
-				for (let key in dataFromDb) {
-					const userData = dataFromDb[key];
-					if (userData.userName === usernameInputFromForm 
-					&& userData.password === passwordInputFromForm) {
-						console.log("User found in the datebase");
-						setIsAuthorized(true);
-						setIsAuth(true);
-						localStorage.setItem("isAuth", "true");
-						localStorage.setItem("username", usernameInputFromForm);
-						// localStorage.setItem("password", passwordInputFromForm);
-						userFound = true;
-						break;
-					} 
-				}
+   const userAuthorization = async () => {
+      try {
+         const username = usernameInputRef.current.value.trim();
+         const password = passwordInputRef.current.value.trim();
 
-				if(!userFound) {
-					setMsg("user not found, redirecting you to signup page");
-					signupHandler();
-				}
-			}
+         if (username === '' || password === '') {
+            setMsg("Please enter your details");
+            return;
+         }
 
-		} catch (error) {
-			console.log("Error", error);
-		}
-	};
+         const response = await axios.get('http://localhost:8080/users');
+         const users = response.data;
+         let userFound = false;
 
-	useEffect(() => {
-		if(isAuthorized) {	
-			navigate("/dashboard");
-		} 
-	}, [isAuthorized]);
+         for (let user of users) {
+            if (user.userName === username && user.password === password) {
+               setIsAuthorized(true);
+               setIsAuth(true);
+               localStorage.setItem("isAuth", "true");
+               localStorage.setItem("username", username);
+               userFound = true;
+               break;
+            }
+         }
 
-	const signupHandler = () => {
-		setTimeout(() => {
-			navigate("/signup");
-		}, 2000);
-	};
+         if (!userFound) {
+            setMsg("User not found, redirecting you to signup page");
+            signupHandler();
+         }
+      } catch (error) {
+         console.log("Error:", error);
+      }
+   };
 
-	const handleSubmit = () => {
-		setIsButtonClicked(true);
-		userAuthorization();
-	};	
+   useEffect(() => {
+      if (isAuthorized) {
+         navigate("/dashboard");
+      }
+   }, [isAuthorized]);
 
-	useEffect(() => {
-		let clickedTimer;
-	
-		if (isButtonClicked) {
-			clickedTimer = setTimeout(() => {
-				setIsButtonClicked(false);
-				setMsg("");
-			}, 2000);
-		}
+   const signupHandler = () => {
+      setTimeout(() => {
+         navigate("/signup");
+      }, 2000);
+   };
 
-		return () => {
-			clearTimeout(clickedTimer);
-		};
-	}, [isButtonClicked, msg]);
+   const handleSubmit = () => {
+      userAuthorization();
+   };
 
-	return (
-		<div className="LoginForm">
-			<span className='login-h'> Please enter your details to login </span>
-			<div>
-				<input
-				className="username"
-				ref={usernameInputRef}
-				placeholder="Enter your username"
-				/>
-			</div>
+   useEffect(() => {
+      const handleKeyDown = (event) => {
+         if (event.key === 'Enter') {
+            event.preventDefault();
+            userAuthorization();	
+         }
+      };
 
-			<div>
-				<input
-				type="password"
-				className='password'
-				ref={passwordInputRef}
-				placeholder='Enter your password'
-				/>
-			</div>
-			
-			<div>
-				<button className='Submit' onClick={handleSubmit} type="button">
-				Submit
-				</button>
-			</div>
-			<span> {msg} </span>
-		</div>
-	);
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+         window.removeEventListener('keydown', handleKeyDown);
+      };
+   }, []);
+
+   return (
+      <div className="LoginForm">
+         <span className='login-h'> Please enter your details to login </span>
+         <div>
+            <input
+               className="username"
+               ref={usernameInputRef}
+               placeholder="Enter your username"
+            />
+         </div>
+
+         <div>
+            <input
+               type="password"
+               className='password'
+               ref={passwordInputRef}
+               placeholder='Enter your password'
+            />
+         </div>
+
+         <div>
+            <button className='Submit' onClick={handleSubmit} type="button">
+               Submit
+            </button>
+         </div>
+         <span>{msg}</span>
+      </div>
+   );
 };
 
 export default LoginForm;

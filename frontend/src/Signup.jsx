@@ -5,21 +5,24 @@ import { useNavigate } from 'react-router-dom';
 const Signup = () => {
 
 	const [isClicked, setIsClicked] = useState(false);	
+	const [isPressed, setIsPressed] = useState(false);
 	const usernameInputRef = useRef(null);
 	const passwordInputRef = useRef(null);
 	const [displayMsg, setDisplayMsg] = useState("");
 	const navigate = useNavigate();
 
 	const saveToDb = async () => {
-		const usernameInputFromForm = usernameInputRef.current.value.trim();
-		const passwordInputFromForm = passwordInputRef.current.value.trim();
+		const username = usernameInputRef.current.value.trim();
+		const password = passwordInputRef.current.value.trim();
 		let FormData = null;
-		let role = "USER";
+		let role = "";
+
+			
 	
-		if (usernameInputFromForm !== "" && passwordInputFromForm !== "") {
+		if (username !== "" && password !== "") {
 			FormData = {
-				userName: usernameInputFromForm,
-				password: passwordInputFromForm,
+				userName: username,
+				password: password,
 				roles: role
 			};
 		}
@@ -37,7 +40,7 @@ const Signup = () => {
 					const data = userdata[key];
 	
 					if (data.userName === FormData.userName) {
-						setDisplayMsg("User name is taken..!");
+						setDisplayMsg("Username is taken..!");
 						userExists = true;
 						break;
 					}
@@ -67,6 +70,22 @@ const Signup = () => {
 		setIsClicked(true);
 		saveToDb();
 	};
+
+	useEffect(() => {
+		const handleKeyDown = (event) => {
+		   if (event.key === 'Enter') {
+			  event.preventDefault();
+			  setIsClicked(true);
+			  saveToDb();
+		   }
+		};
+  
+		window.addEventListener('keydown', handleKeyDown);
+  
+		return () => {
+		   window.removeEventListener('keydown', handleKeyDown);
+		};
+	 }, [isClicked]);
 
 	const handleDisplayMsg = () => {
 		setTimeout(() => {

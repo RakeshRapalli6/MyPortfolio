@@ -46,7 +46,9 @@
 .linkedin {
 	text-decoration: none;	
 	color: black;   
+	/* margin-bottom: 10vh; */
 	margin-top: 2vh;
+	margin-left: 50vh;
 }
 
 .linkedin:hover {
@@ -55,16 +57,18 @@
 }
 
 .urls {
-	margin-top: 10vh;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	flex-direction: column;
 }
 
 .profile-header {
 	font-size: large;
 	font-weight: 800;
+	margin-top: 30vh;
+	margin-left: 50vh;
+	/* padding-bottom: 10%; */
 }
 
 .login-h {
@@ -309,4 +313,14 @@
 	width: 30vh;
 	height: 3vh;
 	margin-left: 2vh;
+}
+
+img {
+	background-image: url(./Profile.png);
+	height: 500px;
+	width: 330px;
+	object-fit: cover;
+	margin-left:120vh;
+	border-radius: 3%;
+	border-style:hidden;
 }

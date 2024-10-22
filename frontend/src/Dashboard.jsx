@@ -1,4 +1,5 @@
-import { useNavigate, Outlet } from "react-router-dom"
+import { useNavigate, Outlet } from "react-router-dom";
+import profile from './Profile.png'
 
 
 export const Dashboard = () => {
@@ -20,12 +21,11 @@ export const Dashboard = () => {
 				</span>
 				<div className="urls">
 					<span className="profile-header"> Link to my profiles</span>
-					<a className='github' href="https://github.com/RakeshRapalli6"> Github</a>
 					<a className='linkedin' href="https://www.linkedin.com/in/rakesh-r-0b2b27253/"> Linkedin</a>
+					<img src={profile} alt="profile" />
 			   </div>
 			</div>
 		</div>
 	);
 };
-
 

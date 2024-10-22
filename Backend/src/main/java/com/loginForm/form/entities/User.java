@@ -21,6 +21,8 @@ public class User {
 	private String userName;
 	@Column(name="password")
 	private String password;
+	@Column(name="roles")
+	private String roles;
 
 	public int getId() {
         return id;
@@ -46,13 +48,14 @@ public class User {
         this.password = password;
     }
 
-	// @Enumerated(EnumType.STRING)
-	// private Role role;
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+        this.roles = roles;
+    }
 
 }
 
-// public enum Role {
-// 	USER,
-// 	ADMIN
-// }
 

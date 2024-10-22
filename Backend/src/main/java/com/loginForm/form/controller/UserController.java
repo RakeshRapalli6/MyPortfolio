@@ -9,7 +9,7 @@ import com.loginForm.form.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:3000") 
+@CrossOrigin(origins = "http://localhost:3000")  
 public class UserController {
 
 	@Autowired
@@ -24,6 +24,7 @@ public class UserController {
 	public Optional<User> getUserById(@PathVariable("id") Long id) {
 		return userService.getUserById(id);
 	}
+
 
 	@PostMapping
 	public User saveUserToDb(@RequestBody User user) {
