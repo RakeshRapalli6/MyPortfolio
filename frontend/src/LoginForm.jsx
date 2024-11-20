@@ -23,9 +23,10 @@ const LoginForm = ({ setIsAuth }) => {
          const response = await axios.get('http://localhost:8080/users');
          const users = response.data;
          let userFound = false;
+		 const passwordFromSignup = localStorage.getItem("pass");
 
          for (let user of users) {
-            if (user.userName === username && user.password === password) {
+            if (user.userName === username && passwordFromSignup === password) {
                setIsAuthorized(true);
                setIsAuth(true);
                localStorage.setItem("isAuth", "true");

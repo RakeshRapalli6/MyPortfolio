@@ -1,28 +1,35 @@
 import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
 
 const Signup = () => {
 
 	const [isClicked, setIsClicked] = useState(false);	
-	const [isPressed, setIsPressed] = useState(false);
 	const usernameInputRef = useRef(null);
 	const passwordInputRef = useRef(null);
 	const [displayMsg, setDisplayMsg] = useState("");
 	const navigate = useNavigate();
 
+	const hashPassword = async (password) => {
+		const saltRounds = 10; // to define the complexity of the hashing
+		const hashedPassword = await bcrypt.hash(password, saltRounds);
+		return hashedPassword;
+	  };
+	  
 	const saveToDb = async () => {
 		const username = usernameInputRef.current.value.trim();
 		const password = passwordInputRef.current.value.trim();
 		let FormData = null;
 		let role = "";
 
-			
-	
+		const encryptedPassword = await hashPassword(password);
+		localStorage.setItem("pass", password);
+
 		if (username !== "" && password !== "") {
 			FormData = {
 				userName: username,
-				password: password,
+				password: encryptedPassword,
 				roles: role
 			};
 		}
