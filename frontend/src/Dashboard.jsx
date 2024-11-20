@@ -28,7 +28,9 @@ export const Dashboard = () => {
 				</div> */}
 				{/* <InfiniteScrollComponent/> */}
 				
+				
 				<div className="about-me">
+					<p>tesing </p>
 
 					<img src={profile} alt="Profile Image" class="profile-img"/>
 					<span className="summary-1">
