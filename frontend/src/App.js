@@ -8,6 +8,7 @@ import { Profile } from './Profile';
 import { useEffect, useState } from 'react';
 import { NoAccess } from './NoAccess';
 import { PassReset } from './PassReset';
+import { Skills } from './Skills';
 
 function App() {
 
@@ -28,12 +29,14 @@ function App() {
 	return (
 		<BrowserRouter>
 		<Routes>
-			<Route path="/" element={<Home />} />	
-			<Route path="/login" element={<LoginForm setIsAuth={setIsAuth}/>} />
-			<Route path="/signup" element={<Signup />} />
-			<Route path="/dashboard" element={ isAuth ? <Dashboard /> : <NoAccess/>}/>
-			<Route path="/profile" element={ isAuth ? <Profile setIsAuth={setIsAuth}/> : <NoAccess/>} />	
-			<Route path="/passwordreset" element={ isAuth ? <PassReset /> : <NoAccess/>} />
+			<Route path="/" element={<Dashboard />} />
+			{/* <Route path="/dashboard" element={ <Dashboard  /> } /> */}
+			<Route path="/skills" element={<Skills/>} />
+
+			{/* <Route path="/login" element={<LoginForm setIsAuth={setIsAuth}/>} /> */}
+			{/* <Route path="/signup" element={<Signup />} /> */}
+			{/* <Route path="/profile" element={ isAuth ? <Profile setIsAuth={setIsAuth}/> : <NoAccess/>} />	 */}
+			{/* <Route path="/passwordreset" element={ isAuth ? <PassReset /> : <NoAccess/>} /> */}
 		</Routes>
 		</BrowserRouter>
 	);

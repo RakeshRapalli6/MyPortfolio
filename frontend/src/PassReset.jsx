@@ -9,7 +9,7 @@ export const PassReset = () => {
 	const oldPassword = useRef(null);
 	const newPassword = useRef(null);
 	const newPasswordAgain = useRef(null);
-	const newpass = "";
+	let newpass = "";
 	let changedPassword = "";
 	let username = "";
 
